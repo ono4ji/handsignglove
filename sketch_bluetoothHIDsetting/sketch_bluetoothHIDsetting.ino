@@ -8,6 +8,7 @@
 #define PWM_WIDTH 500
 // roop = 2ms
 
+//#define PORATE 115200
 #define PORATE 9600
  
 SoftwareSerial btSerial(BT_RX, BT_TX);
@@ -67,6 +68,11 @@ void loop()
         btSerial.print("-");
         btSerial.print('\r');
     }
+    if(c == 'f'){
+        Serial.write("SF,1\n");
+        btSerial.print("SF,1");
+        btSerial.print('\r');
+    }
     if(c == 'm'){
 //    SM,0    //スレーブモードにする
 //    SM,6    //pairing modeにする
@@ -110,7 +116,7 @@ void loop()
         btSerial.print("SU,9600");
         btSerial.print('\r');
     }
-    if(c == 'p'){
+    if(c == 'n'){
     //SR,5CF93899A91A
         Serial.write("SR,5CF93899A91A\n");
         btSerial.print("SR,001BDC056605");
